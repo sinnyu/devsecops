@@ -45,6 +45,11 @@ jobs:
       - uses: ShiftLeftSecurity/scan-action@master
         with: 
           type: "credscan,java,depscan"
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: SLSCAN reports
+          path: ${{github.workspace}}/reports
   build_and_push:
     name: Build & Push to DockerHub
     needs: slscan
